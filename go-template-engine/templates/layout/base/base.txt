@@ -1,0 +1,6 @@
+{{- define "base" }}
+Base Text
+{{ block "header" . }}{{ end }}
+{{ block "content" . }}{{ end }}
+{{ block "footer" . }}{{ end }}
+{{ end }}
