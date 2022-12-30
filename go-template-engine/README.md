@@ -1,10 +1,16 @@
++++
+summary: A simple extensions of the Go's standard template system that can be used in web application in a similar ways eg. Django. 
+is_pinned: False
+is_published: True
++++
+
 # Simple Extensions of the Go's Template System
 
 The HTML template system available in the Go's standard library is powerful but missing some functionaly to use it in web applications as it is.
 The main issue is that while it supports template association so but it lacks the more powerful template inheritence like Django's template engine.
-This limits the ways how you can organize and reuse templates. 
+This limits the ways how you can organize and reuse templates.
 
-One possible way to overcome this issue is to explicitly separate templates which related to a common layout of a page (like base, header, footer etc.) from the templates which defines a given page (eg. index.html, about.html etc). 
+One possible way to overcome this issue is to explicitly separate templates which related to a common layout of a page (like base, header, footer etc.) from the templates which defines a given page (eg. index.html, about.html etc).
 
 Other minor technical issue is that there is no parser function which walks though an entire directory tree in a filesystem defined by `fs.FS` interface.
 
@@ -13,8 +19,8 @@ In the following I build up a simple template engine which overcomes these issue
 ## Better parseFS
 
 While the `html/template` module has a `ParseFS` function it returns error if the input filesystem includes directory and does not walk though the entire tree. Looking the
-source code of this function and other helper in the `go/src/text/template/helper.go` 
-we can borrow some idea and create a simple derivation that extends the capabilites of 
+source code of this function and other helper in the `go/src/text/template/helper.go`
+we can borrow some idea and create a simple derivation that extends the capabilites of
 the current `ParseFS`.
 
 ```go
@@ -71,9 +77,9 @@ func ParseFS(t *tpl.Template, fsys fs.FS, patterns ...string) (*tpl.Template, er
 ```
 
 The main idea is that we walk though the entire directory tree using `fs.WalkDir`
-and parse template files that match the defined glob patterns ignoring the directories. 
+and parse template files that match the defined glob patterns ignoring the directories.
 All the templates in the
-directory tree associated together, the idea which comes from the `parseFiles` private function 
+directory tree associated together, the idea which comes from the `parseFiles` private function
 in the mentioned `helper.go` source code.
 
 This `ParseFS(nil, os.DirFS("templates/layout"), "*.html")` call is able to parse for example the following directory structure ignoring the `base.txt` file:
@@ -146,12 +152,12 @@ func ExecuteTemplate(layout *tpl.Template, w io.Writer, templatePath string, dat
 	return t.ExecuteTemplate(w, templatePath, data)
 }
 ```
+
 ## Conclusion
 
-With a simple extensions of the Go's standard template system we can get 
+With a simple extensions of the Go's standard template system we can get
 a template engine that can be used in web application in a similar ways as other web frameworks
-template systems (eg. Django). 
+template systems (eg. Django).
 
 The `github.com/szferi/codenotes/go-template-engine/` includes an `engine` module which packs
 the above ideas into a module.
-
