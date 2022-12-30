@@ -29,9 +29,7 @@ must be in the same directory where these resource directories are.
 Lets first setup the build tag. The `embedding_allowed.go` file uses directive `// +build allow_embed` to tell the compiler that this file is only should included to the build process if the `allow_embed` build tag is present, while the `embedding_not_allowed.go` file contains the negated version of the same instruction. Both file defines an `IsEmbeddingAllowed()` function which returns true or false respectively and it can be use to define conditional beheviour
 in other part of the code.
 
-embedding_allowed.go:
-
-```go
+```go, filename=embedding_allowed.go
 // +build allow_embed
 
 package main
@@ -41,9 +39,7 @@ func init() {
 }
 ```
 
-embeddin_not_allowed.go:
-
-```go
+```go, filename=embeddin_not_allowed.go
 // +build !allow_embed
 
 package main
@@ -55,7 +51,7 @@ func init() {
 
 Creating a following simple `main.go` allow as to test our setup
 
-```go
+```go, filename=main.go
 package main
 
 import "fmt"
@@ -67,14 +63,14 @@ func main() {
 
 Compiling without any build tag we exept "false" as an output:
 
-```shell
+```shell, lineno=False
 > go build -o m . && ./m
 > false
 ```
 
 While if we define `allow_embed` build tag we expect "true" as an output:
 
-```shell
+```shell, lineno=False
 > go build -o m -tags allow_embed . && ./m
 > true
 ```
@@ -87,9 +83,7 @@ file `embedding_not_allowed.go` we keep the variables uninitialized since we wil
 
 We also add code that walk through in each FS and prints it content into the `main.go` to demonstrate the differences.
 
-embedding_allowed.go:
-
-```go
+```go, filename=embedding_allowed.go
 // +build allow_embed
 
 package main
@@ -107,9 +101,7 @@ func IsEmbeddingAllowed() bool {
 }
 ```
 
-embeding_not_allowed.go:
-
-```go
+```go, filename=embeding_not_allowed.go
 // +build !allow_embed
 
 package main
@@ -121,9 +113,7 @@ func IsEmbeddingAllowed() bool {
 }
 ```
 
-main.go:
-
-```go
+```go, filename=main.go
 
 package main
 
@@ -167,9 +157,7 @@ While the `assetsFS` variable should casted to `http.FS` and wraped with `http.F
 
 Finally the `main.go` code shows a simple way how to use these two new functions to define the behaviour of the "/" and "/assets/" endpoints.
 
-embedding_allowed.go:
-
-```go
+```go, filename=embedding_allowed.go
 // +build allow_embed
 
 package main
@@ -199,9 +187,7 @@ func GetTemplatesFS() fs.FS {
 }
 ```
 
-embedding_now_allowed.go:
-
-```go
+```go, filename=embedding_now_allowed.go
 package main
 
 import (
@@ -223,9 +209,7 @@ func GetTemplatesFS() fs.FS {
 }
 ```
 
-main.go:
-
-```go
+```go, filename=main.go
 package main
 
 import (
