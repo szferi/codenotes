@@ -1,7 +1,8 @@
 +++
 summary: How to use `go:embed` directive conditionaly
-is_pinned: True
+is_pinned: False
 is_published: True
+published_at: 2022-11-09
 +++
 
 # Conditional file embeding in Go
