@@ -2,7 +2,7 @@
 summary: A simple extension of Go's standard template system that can be used in web applications similarly, e.g. Django. 
 is_pinned: False
 is_published: True
-published_at: 2022-10-14
+published_at: 2022-11-14
 +++
 
 # Simple Extensions of the Go's Template System
