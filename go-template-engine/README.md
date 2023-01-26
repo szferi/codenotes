@@ -110,7 +110,7 @@ the `content` block, then multiple files will define this block which results in
 output during the execution of the template. That leads us to the second extension to
 the standard template system
 
-# Execution of page templates
+## Execution of page templates
 
 We require that every page template have the following schematic structure:
 
