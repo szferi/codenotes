@@ -238,4 +238,4 @@ func main() {
 
 Using the `IsEmbeddingAllowed()` function, you can further optimize the system because you can parse the templates outside of the handle function.
 
-The `github.com/szferi/codenotes/go-cond-embed/` includes the source codes and example codes.
+The <https://github.com/szferi/codenotes/tree/main/go-cond-embed/> repository contains the source codes and example codes.

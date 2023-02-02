@@ -160,5 +160,5 @@ With a simple extension of the Go's standard template system, we can get
 a template engine that can be used in web applications similarly to other web frameworks
 template systems (e.g. Django).
 
-The `github.com/szferi/codenotes/go-template-engine/` includes an `engine` module that packs
+The <https://github.com/szferi/codenotes/tree/main/go-template-engine> directory contains an `engine` module that packs
 the above ideas into a module.
