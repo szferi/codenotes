@@ -54,7 +54,7 @@ Using the returned token, you can create a Kubernetes secret that holds this tok
 
 Then to create a `SecretStore`:
 
-```yaml filename=secret-store.yaml
+```yaml, filename=secret-store.yaml
 apiVersion: external-secrets.io/v1beta1
 kind: SecretStore
 metadata:
@@ -79,7 +79,7 @@ First, you create a deploy token on Gitlab. You can do that under the Project pa
 
 The following manifest creates an `ExternalSecret` named `registry-credetial` that uses the previously defined Doppler secrets and the `SecretStore` to create and sync a Kubernetes Secret named `gitlab-registry-credential` with properly formatted `.dockerconfigjson` data using Go template. You can adjust the `refreshInterval` during development to lower value to get synced faster.
 
-```yaml filename=gitlab-pull-secret.yaml
+```yaml, filename=gitlab-pull-secret.yaml
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
@@ -125,7 +125,7 @@ spec:
 
 The following manifest show how to create a `Deployment` that uses the previously defined `gitlab-registry-credential` Kubernetes secret as a `imagePullSecrets`. Important to note that the `imagePullSecret` name is the target secret name of the `ExternalSecret`, not the external secret itself.
 
-```yaml filename=deployment.yaml
+```yaml, filename=deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
