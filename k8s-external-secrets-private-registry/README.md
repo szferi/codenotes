@@ -121,7 +121,7 @@ spec:
               key: GITLAB_DEPLOY_TOKEN_PASSWORD
 ```
 
-# Using Secret to deploy from private repository
+## Using Secret to deploy from private repository
 
 The following manifest show how to create a `Deployment` that uses the previously defined `gitlab-registry-credential` Kubernetes secret as a `imagePullSecrets`. Important to note that the `imagePullSecret` name is the target secret name of the `ExternalSecret`, not the external secret itself.
 
