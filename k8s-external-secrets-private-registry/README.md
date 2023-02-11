@@ -50,7 +50,7 @@ Using the returned token, you can create a Kubernetes secret that holds this tok
 ❯  kubectl create secret generic doppler-auth-token --namespace test --from-literal dopplerToken="dp.st.XXXX"
 ```
 
-(be aware of the extra space at the beginning of the command to not save it to history)
+(be aware of the extra space at the beginning of the command not to save it to history)
 
 Then to create a `SecretStore`:
 
@@ -121,7 +121,7 @@ spec:
               key: GITLAB_DEPLOY_TOKEN_PASSWORD
 ```
 
-## Using Secret to deploy from private repository
+## Using Secret to deploy from a private repository
 
 The following manifest show how to create a `Deployment` that uses the previously defined `gitlab-registry-credential` Kubernetes secret as a `imagePullSecrets`. Important to note that the `imagePullSecret` name is the target secret name of the `ExternalSecret`, not the external secret itself.
 
