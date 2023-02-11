@@ -1,5 +1,4 @@
 //go:build allow_embed
-// +build allow_embed
 
 package main
 

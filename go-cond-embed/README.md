@@ -31,7 +31,7 @@ Let's first set up the build tag. The `embedding_allowed.go` file uses directive
 in another part of the code.
 
 ```go, filename=embedding_allowed.go
-// +build allow_embed
+//go:build allow_embed
 
 package main
 
@@ -85,7 +85,7 @@ file `embedding_not_allowed.go`, we keep the variables uninitialized since we wi
 We also add code that walks through each FS and prints its content in the `main.go` to demonstrate the differences.
 
 ```go, filename=embedding_allowed.go
-// +build allow_embed
+//go:build allow_embed
 
 package main
 
@@ -103,7 +103,7 @@ func IsEmbeddingAllowed() bool {
 ```
 
 ```go, filename=embeding_not_allowed.go
-// +build !allow_embed
+//go:build !allow_embed
 
 package main
 
@@ -158,7 +158,7 @@ While the `assetsFS` variable should casted to `http.FS` and wrapped with `http.
 Finally, the `main.go` code shows a simple way to use these two new functions to define the behavior of the "/" and "/assets/" endpoints.
 
 ```go, filename=embedding_allowed.go
-// +build allow_embed
+//go:build allow_embed
 
 package main
 
