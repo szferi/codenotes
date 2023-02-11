@@ -27,7 +27,7 @@ directory in the root of the source code. The Go code that contains the `//go:em
 
 ## Setup build tag
 
-Let's first set up the build tag. The `embedding_allowed.go` file uses directive `// +build allow_embed` to tell the compiler that this file is only should be included in the build process if the `allow_embed` build tag is present, while the `embedding_not_allowed.go` file contains the negated version of the same instruction. Both files define an `IsEmbeddingAllowed()` function that returns true or false respectively, and it can be used to define conditional behavior
+Let's first set up the build tag. The `embedding_allowed.go` file uses directive `//go:build allow_embed` to tell the compiler that this file is only should be included in the build process if the `allow_embed` build tag is present, while the `embedding_not_allowed.go` file contains the negated version of the same instruction. Both files define an `IsEmbeddingAllowed()` function that returns true or false respectively, and it can be used to define conditional behavior
 in another part of the code.
 
 ```go, filename=embedding_allowed.go
@@ -41,7 +41,7 @@ func init() {
 ```
 
 ```go, filename=embeddin_not_allowed.go
-// +build !allow_embed
+//go:build !allow_embed
 
 package main
 
